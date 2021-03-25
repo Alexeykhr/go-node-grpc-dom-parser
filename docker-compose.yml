@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  go:
+    build:
+      context: ./go
+      dockerfile: Dockerfile
+    volumes:
+      - ./go:/app
+    networks:
+      - backend
+    ports:
+      - 8081:8081
+
+  node:
+    image: buildkite/puppeteer:8.0.0
+    working_dir: /usr/app
+    command: sh -c "yarn global add nodemon && yarn && yarn watch"
+    user: "1000"
+    volumes:
+      - ./node:/usr/app
+    networks:
+      - backend
+    ports:
+      - 8080:8080
+
+networks:
+  backend:

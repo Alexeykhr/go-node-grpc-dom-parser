@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package parser;
+
+option go_package = "/service";
+
+service ParserSvc {
+  rpc Html(HtmlRequest) returns (HtmlResponse);
+  rpc Image(ImageRequest) returns (ImageResponse);
+}
+
+message HtmlRequest {
+  string url = 1;
+}
+
+message HtmlResponse {
+  string content = 1;
+}
+
+message ImageRequest {
+  string url = 1;
+}
+
+message ImageResponse {
+  string content = 1;
+}
