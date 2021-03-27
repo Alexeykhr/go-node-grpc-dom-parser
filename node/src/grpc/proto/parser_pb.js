@@ -524,7 +524,7 @@ proto.parser.ImageResponse.prototype.toObject = function(opt_includeInstance) {
  */
 proto.parser.ImageResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    content: jspb.Message.getFieldWithDefault(msg, 1, "")
+    content: msg.getContent_asB64()
   };
 
   if (includeInstance) {
@@ -562,7 +562,7 @@ proto.parser.ImageResponse.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setContent(value);
       break;
     default:
@@ -594,9 +594,9 @@ proto.parser.ImageResponse.prototype.serializeBinary = function() {
  */
 proto.parser.ImageResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getContent();
+  f = message.getContent_asU8();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeBytes(
       1,
       f
     );
@@ -605,20 +605,44 @@ proto.parser.ImageResponse.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional string content = 1;
- * @return {string}
+ * optional bytes content = 1;
+ * @return {!(string|Uint8Array)}
  */
 proto.parser.ImageResponse.prototype.getContent = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {string} value
+ * optional bytes content = 1;
+ * This is a type-conversion wrapper around `getContent()`
+ * @return {string}
+ */
+proto.parser.ImageResponse.prototype.getContent_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getContent()));
+};
+
+
+/**
+ * optional bytes content = 1;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getContent()`
+ * @return {!Uint8Array}
+ */
+proto.parser.ImageResponse.prototype.getContent_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getContent()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
  * @return {!proto.parser.ImageResponse} returns this
  */
 proto.parser.ImageResponse.prototype.setContent = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3BytesField(this, 1, value);
 };
 
 

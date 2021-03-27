@@ -13,9 +13,9 @@ services:
       - 8081:8081
 
   node:
-    image: buildkite/puppeteer:8.0.0
+    image: mcr.microsoft.com/playwright:focal
     working_dir: /usr/app
-    command: sh -c "yarn global add nodemon && yarn && yarn watch"
+    command: sh -c "yarn && yarn watch"
     user: "1000"
     volumes:
       - ./node:/usr/app

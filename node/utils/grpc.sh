@@ -1,10 +1,18 @@
 #!/bin/bash
 
 rootPath="$(dirname $(dirname $(realpath $0)))"
-protoPath="$(dirname $rootPath)/proto"
+inProtoPath="$(dirname $rootPath)/proto"
+outProtoPath="$rootPath/src/grpc/proto"
+binPath=$rootPath/node_modules/.bin
 
-$rootPath/node_modules/.bin/grpc_tools_node_protoc \
-  --js_out=import_style=commonjs,binary:$rootPath/service/proto/ \
-  --grpc_out=grpc_js:$rootPath/service/proto \
-  --proto_path=$protoPath \
-  $protoPath/*.proto
+$binPath/grpc_tools_node_protoc \
+  --js_out=import_style=commonjs,binary:$outProtoPath \
+  --grpc_out=grpc_js:$outProtoPath \
+  --proto_path=$inProtoPath \
+  $inProtoPath/*.proto
+
+$binPath/grpc_tools_node_protoc \
+  --plugin=protoc-gen-ts=$binPath/protoc-gen-ts \
+  --ts_out=$outProtoPath \
+  --proto_path=$inProtoPath \
+  $inProtoPath/*.proto

@@ -22,5 +22,5 @@ message ImageRequest {
 }
 
 message ImageResponse {
-  string content = 1;
+  bytes content = 1;
 }
