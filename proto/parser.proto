@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package parser;
 
-option go_package = "/service";
+option go_package = "/services/proto";
 
 service ParserSvc {
   rpc Html(HtmlRequest) returns (HtmlResponse);
