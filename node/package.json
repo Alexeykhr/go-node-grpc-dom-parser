@@ -6,8 +6,7 @@
   "author": "Alexey Khrushch <alexeykhr@outlook.com>",
   "scripts": {
     "serve": "ts-node src/main.ts",
-    "watch": "nodemon --watch 'src/**' --ext 'ts,json' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/main.ts",
-    "grpc-generate": "sh utils/grpc.sh"
+    "watch": "nodemon --watch 'src/**' --ext 'ts,json' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/main.ts"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.2.11",
