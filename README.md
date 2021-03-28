@@ -38,6 +38,11 @@ $ sh ./node/utils/grpc.sh
 
 `http://localhost:8081/html?url=https://news.ycombinator.com/`
 
+## Testing
+
+- Run `docker-compose` containers
+- Run `go test .` in **go** folder
+
 ## Technologies
 
 - [gPRC](https://grpc.io/)
