@@ -1,8 +1,8 @@
-# Go Node GRPC DOM Parser
+# Go Node gRPC DOM Parser
 
 > A small example of a project to test gPRC technology.
 
-A running `Go` server that accepts requests from the Internet and communicates with` Node` using [`gPRC`] (https://grpc.io/).
+A running `Go` server that accepts requests from the Internet and communicates with` Node` using [`gRPC`](https://grpc.io/).
 
 ## Development
 
